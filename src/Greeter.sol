@@ -1,27 +1,15 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/erc721/ERC721.sol";
+import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
-library Errors {
-    string internal constant InvalidBlockNumber =
-        "invalid block number, please wait";
-    string internal constant CannotGm = "cannot greet with gm";
-}
+contract InternNft is ERC721("Intern-nfts", "INFT") {
 
-contract Greeter is Ownable {
-    string public greeting;
+    string public prefixURI;
 
-    function gm() public onlyOwner {
-        require(block.number % 10 == 0, Errors.InvalidBlockNumber);
-        greeting = "gm";
+    constructor(string memory _prefixURI) {
+        prefixURI = _prefixURI;
     }
 
-    function greet(string memory _greeting) public {
-        require(
-            keccak256(abi.encodePacked(_greeting)) != keccak256("gm"),
-            Errors.CannotGm
-        );
-        greeting = _greeting;
-    }
 }
