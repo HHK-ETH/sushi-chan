@@ -2,14 +2,17 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
 contract SushiChan is ERC721Enumerable, VRFConsumerBase, Ownable {
+    using Strings for uint256;
+
     bytes32 internal keyHash;
     uint256 internal fee;
-
     uint256 public randomNumber;
+    
     string public prefixURI;
     uint256 public constant MAX_SUPPLY = 1000;
 
@@ -94,7 +97,7 @@ contract SushiChan is ERC721Enumerable, VRFConsumerBase, Ownable {
         }
 
         uint256 attributes = tokenAttributes(_tokenId);
-        return string(abi.encodePacked(prefixURI, attributes));
+        return string(abi.encodePacked(prefixURI, attributes.toString(), ".json"));
     }
 
     /**
