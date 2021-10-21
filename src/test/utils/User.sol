@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./../../SushiChan.sol";
-import "@openzeppelin/contracts/token/erc721/IERC721Receiver.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract User is IERC721Receiver {
     SushiChan internal sushiChan;
