@@ -63,7 +63,9 @@ contract SushiChanTest is DSTest {
 
     function test_tokenURI_random_not_set() public {
         owner.mint();
-        assertEq(sushiChan.tokenURI(sushiChan.totalSupply() - 1), string(abi.encodePacked(prefixURI, "nrs")));
+        assertEq(
+            sushiChan.tokenURI(sushiChan.totalSupply() - 1),
+            string(abi.encodePacked(prefixURI, "nrs"))
+        );
     }
-
 }
