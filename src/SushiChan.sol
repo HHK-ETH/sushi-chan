@@ -12,7 +12,7 @@ contract SushiChan is ERC721Enumerable, VRFConsumerBase, Ownable {
     bytes32 internal keyHash;
     uint256 internal fee;
     uint256 public randomNumber;
-    
+
     string public prefixURI;
     uint256 public constant MAX_SUPPLY = 1000;
 
@@ -97,7 +97,8 @@ contract SushiChan is ERC721Enumerable, VRFConsumerBase, Ownable {
         }
 
         uint256 attributes = tokenAttributes(_tokenId);
-        return string(abi.encodePacked(prefixURI, attributes.toString(), ".json"));
+        return
+            string(abi.encodePacked(prefixURI, attributes.toString(), ".json"));
     }
 
     /**
