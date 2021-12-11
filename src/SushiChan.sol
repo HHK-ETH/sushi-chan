@@ -133,7 +133,7 @@ contract SushiChan is ERC721Enumerable, VRFConsumerBase, Ownable {
         uint256 randomUint = uint256(
             keccak256(abi.encode(randomNumber, _tokenId, _attr))
         );
-        return randomUint % 2 == 1 ? randomUint % 8 : randomUint % 9; //9 is the rarest id
+        return randomUint % 2 == 1 ? randomUint % 9 : randomUint % 10; //9 is the rarest id
     }
 
     /**
